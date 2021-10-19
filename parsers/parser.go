@@ -7,6 +7,7 @@ type URLParser interface {
 }
 
 var parsers = []URLParser{
+	RTVSParser{},
 	YoutubeDLParser{},
 }
 
