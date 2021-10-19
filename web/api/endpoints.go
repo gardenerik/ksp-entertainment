@@ -8,18 +8,18 @@ import (
 )
 
 func NowPlaying(c *gin.Context) {
-	var now_playing database.QueueItem
-	res := database.DB.Where("played_at IS NOT NULL").Order("played_at desc").Preload("LibraryItem").Take(&now_playing)
+	var nowPlaying database.QueueItem
+	res := database.DB.Where("played_at IS NOT NULL").Order("played_at desc").Preload("LibraryItem").Take(&nowPlaying)
 	if res.RowsAffected == 0 {
 		c.JSON(404, gin.H{})
 		return
 	}
 
 	c.JSON(200, gin.H{
-		"name":     now_playing.LibraryItem.Name,
-		"url":      now_playing.LibraryItem.URL,
-		"start_at": now_playing.PlayedAt,
-		"added_by": now_playing.AddedBy,
+		"name":     nowPlaying.LibraryItem.Name,
+		"url":      nowPlaying.LibraryItem.URL,
+		"start_at": nowPlaying.PlayedAt,
+		"added_by": nowPlaying.AddedBy,
 	})
 }
 
