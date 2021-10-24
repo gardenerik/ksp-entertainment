@@ -1,10 +1,20 @@
 package api
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
+	"zahradnik.xyz/ksp-entertainment/web/api/library"
+)
 
 func RegisterRoutes(router *gin.RouterGroup) {
-	router.GET("/now_playing", NowPlaying)
-	router.POST("/stop", StopPlayer)
-	router.POST("/pause", PausePlayer)
-	router.POST("/add_to_queue", AddToQueue)
+	router.GET("/queue/", GetQueue)
+	router.POST("/queue/", AddToQueue)
+	router.DELETE("/queue/", ClearQueue)
+
+	router.GET("/playback/now/", NowPlaying)
+	router.POST("/playback/skip/", SkipPlayback)
+	router.POST("/playback/resume/", ResumePlayback)
+	router.POST("/playback/stop/", StopPlayback)
+	router.POST("/playback/pause/", PausePlayback)
+
+	library.RegisterRoutes(router.Group("/library"))
 }

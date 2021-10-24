@@ -10,12 +10,13 @@ import (
 )
 
 var MpvRunning = false
+var QueueStopped = false
 
 func RunPlayerWorker() {
 	for {
 		var queueItem database.QueueItem
 		res := database.DB.Where("played_at IS NULL").Order("id").Preload("LibraryItem").Take(&queueItem)
-		if res.RowsAffected == 0 {
+		if res.RowsAffected == 0 || QueueStopped {
 			// Empty queue
 			time.Sleep(15 * time.Second)
 			continue
