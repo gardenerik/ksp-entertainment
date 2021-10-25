@@ -1,0 +1,33 @@
+{{define "title"}}Library{{end}}
+
+{{define "main"}}
+    <div class="flex items-baseline gap-4 mb-8">
+        <h1 class="font-bold text-4xl">Library</h1>
+
+        <a href="/library/add/" class="text-green-600 hover:text-green-500 hover:underline">+ Add item</a>
+    </div>
+
+    {{range .items}}
+    <div class="mb-2 border border-gray-700 py-2 px-3 rounded flex items-center">
+        <div class="js-lib-enqueue" data-id="{{.ID}}">
+            <i data-feather="plus-square" title="Add to queue" class="w-5 h-5 mr-2 cursor-pointer hover:text-green-500"></i>
+        </div>
+        <a href="#">{{.Name}} <span class="text-xs text-gray-400">#{{.ID}}</span></a>
+    </div>
+    {{else}}
+    <div class="text-center text-gray-400 text-xl">
+        The library is empty.
+    </div>
+    {{end}}
+
+    <div class="flex justify-center items-center gap-2 mt-6">
+        {{if .prevPage}}
+        <a href="?page={{ .prevPage }}" class="rounded border border-gray-700 px-3 py-1">Previous</a>
+        {{end}}
+        {{if .nextPage}}
+        <a href="?page={{ .nextPage }}" class="rounded border border-gray-700 px-3 py-1">Next</a>
+        {{end}}
+    </div>
+
+    <script src="/static/app/library.js"></script>
+{{end}}

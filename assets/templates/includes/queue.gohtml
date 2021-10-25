@@ -1,13 +1,15 @@
+{{template "_base" .}}
+
 {{define "title"}}Queue{{end}}
 
 {{define "main"}}
 
-    <div class="flex flex-col md:flex-row items-baseline gap-4 mb-8">
+    <div class="flex items-baseline gap-4 mb-8">
         <h1 class="font-bold text-4xl">Queue</h1>
 
         <button id="js-queue-add" class="text-green-600 hover:text-green-500 hover:underline">+ Add link</button>
 
-        <button id="js-queue-clear" class="md:ml-auto text-red-600 hover:text-red-500 hover:underline">Clear queue</button>
+        <button id="js-queue-clear" class="ml-auto text-red-600 hover:text-red-500 hover:underline">Clear queue</button>
     </div>
 
     <div id="js-queue-list"></div>

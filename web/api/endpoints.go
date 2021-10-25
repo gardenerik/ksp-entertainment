@@ -18,8 +18,8 @@ func NowPlaying(c *gin.Context) {
 	c.JSON(200, gin.H{
 		"current":       nowPlaying,
 		"queue_stopped": player.QueueStopped,
-		"playing": player.MpvRunning,
-		"paused": player.MpvPaused,
+		"playing":       player.MpvRunning,
+		"paused":        player.MpvPaused,
 	})
 }
 
@@ -78,8 +78,8 @@ func AddToQueue(c *gin.Context) {
 		return
 	}
 
-	lib := database.GetOrAddLibraryItem(url)
-	database.AddToQueue(lib, "api")
+	lib := database.GetOrAddLibraryItem(url, "")
+	database.AddToQueue(lib)
 	c.JSON(200, lib)
 }
 
@@ -95,7 +95,7 @@ func ClearQueue(c *gin.Context) {
 }
 
 func DeleteFromQueue(c *gin.Context) {
-	itemId := c.GetInt("id")
+	itemId := c.Param("id")
 	database.DB.Where("played_at IS NULL").Where("id = ?", itemId).Delete(&database.QueueItem{})
 	c.Status(200)
 }

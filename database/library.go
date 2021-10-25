@@ -22,11 +22,15 @@ type Playlist struct {
 	UpdatedAt    time.Time `json:"updated_at"`
 }
 
-func GetOrAddLibraryItem(url string) LibraryItem {
+func GetOrAddLibraryItem(url, name string) LibraryItem {
 	var lib LibraryItem
 	res := DB.Where("url = ?", url).Limit(1).Find(&lib)
 	if res.RowsAffected == 0 {
-		lib.Name = parsers.GetName(url)
+		if name != "" {
+			lib.Name = name
+		} else {
+			lib.Name = parsers.GetName(url)
+		}
 		lib.URL = url
 		DB.Save(&lib)
 	}

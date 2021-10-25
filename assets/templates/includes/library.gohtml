@@ -1,0 +1,19 @@
+{{template "_base" .}}
+
+{{define "title"}}Library{{end}}
+
+{{define "main"}}
+
+    <div class="flex items-baseline gap-4 mb-8">
+        <h1 class="font-bold text-4xl">Library</h1>
+
+        <button id="js-queue-add" class="text-green-600 hover:text-green-500 hover:underline">+ Add link</button>
+
+        <button id="js-queue-clear" class="ml-auto text-red-600 hover:text-red-500 hover:underline">Clear queue</button>
+    </div>
+
+    <div id="js-queue-list"></div>
+    <div id="js-queue-empty" class="hidden text-center text-gray-400 text-xl">
+        The queue is empty.
+    </div>
+{{end}}

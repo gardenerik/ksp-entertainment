@@ -1,3 +1,7 @@
 entertainment.db
 .idea/
 tmp/
+node_modules/
+assets/static/app.css
+
+ansible/

@@ -19,7 +19,7 @@ func RunPlayerWorker() {
 		res := database.DB.Where("played_at IS NULL").Order("id").Preload("LibraryItem").Take(&queueItem)
 		if res.RowsAffected == 0 || QueueStopped {
 			// Empty queue
-			time.Sleep(15 * time.Second)
+			time.Sleep(5 * time.Second)
 			continue
 		}
 
@@ -41,7 +41,7 @@ func StartMpv(url string) error {
 	log.Printf("Starting MPV for URL %v\n", url)
 	MpvRunning = true
 	MpvPaused = false
-	cmd := exec.Command("/usr/bin/mpv", url, "--input-ipc-server=/tmp/mpv.sock")
+	cmd := exec.Command("/usr/bin/mpv", url, "--input-ipc-server=/tmp/mpv.sock", "--no-video")
 	err := cmd.Run()
 	MpvRunning = false
 	return err
