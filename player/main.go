@@ -10,6 +10,7 @@ import (
 )
 
 var MpvRunning = false
+var MpvPaused = false
 var QueueStopped = false
 
 func RunPlayerWorker() {
@@ -39,6 +40,7 @@ func RunPlayerWorker() {
 func StartMpv(url string) error {
 	log.Printf("Starting MPV for URL %v\n", url)
 	MpvRunning = true
+	MpvPaused = false
 	cmd := exec.Command("/usr/bin/mpv", url, "--input-ipc-server=/tmp/mpv.sock")
 	err := cmd.Run()
 	MpvRunning = false
@@ -69,5 +71,6 @@ func PauseMpv() error {
 		return nil
 	}
 
+	MpvPaused = !MpvPaused
 	return SendMpvCommand("cycle pause")
 }

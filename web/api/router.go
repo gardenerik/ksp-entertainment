@@ -9,6 +9,7 @@ func RegisterRoutes(router *gin.RouterGroup) {
 	router.GET("/queue/", GetQueue)
 	router.POST("/queue/", AddToQueue)
 	router.DELETE("/queue/", ClearQueue)
+	router.DELETE("/queue/:id/", DeleteFromQueue)
 
 	router.GET("/playback/now/", NowPlaying)
 	router.POST("/playback/skip/", SkipPlayback)
