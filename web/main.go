@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"github.com/gin-contrib/multitemplate"
 	"github.com/gin-gonic/gin"
-	"github.com/spf13/viper"
 	"path"
 	"path/filepath"
 	"zahradnik.xyz/ksp-entertainment/web/api"
@@ -32,10 +31,6 @@ func customRenderer(templatesDir string) multitemplate.Renderer {
 }
 
 func RunWebServer(port int) {
-	if !viper.GetBool("app.debug") {
-		gin.SetMode(gin.ReleaseMode)
-	}
-
 	r := gin.Default()
 	r.HTMLRender = customRenderer("assets/templates/")
 	r.Static("static/", "assets/static/")

@@ -5,7 +5,9 @@ go 1.17
 require (
 	github.com/gin-contrib/multitemplate v0.0.0-20211002122701-e9e3201b87a0
 	github.com/gin-gonic/gin v1.7.4
+	github.com/go-telegram-bot-api/telegram-bot-api v4.6.4+incompatible
 	github.com/spf13/viper v1.9.0
+	github.com/thanhpk/randstr v1.0.4
 	gopkg.in/guregu/null.v4 v4.0.0
 	gorm.io/driver/sqlite v1.1.6
 	gorm.io/gorm v1.21.16
@@ -36,6 +38,7 @@ require (
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/subosito/gotenv v1.2.0 // indirect
+	github.com/technoweenie/multipartstreamer v1.0.1 // indirect
 	github.com/ugorji/go/codec v1.1.7 // indirect
 	golang.org/x/crypto v0.0.0-20210817164053-32db794688a5 // indirect
 	golang.org/x/sys v0.0.0-20210823070655-63515b42dcdf // indirect

@@ -1,0 +1,18 @@
+{{define "title"}}Telegram pairing{{end}}
+
+{{define "main"}}
+
+    <h1 class="font-bold text-4xl">Telegram pairing</h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 w-full mt-24">
+        <div class="flex items-center justify-center">
+            <img src="https://chart.googleapis.com/chart?cht=qr&chs=400&chl=https%3A%2F%2Ft.me%2FT2EntertainmentBot%3Fstart={{.password}}" alt="QR">
+        </div>
+        <div class="flex items-center justify-center flex-col gap-y-2">
+            <h2 class="font-bold text-2xl">@T2EntertainmentBot</h2>
+            <span>type:</span>
+            <p class="font-mono text-4xl">/start {{.password}}</p>
+        </div>
+    </div>
+        
+{{end}}
