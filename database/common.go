@@ -1,6 +1,7 @@
 package database
 
 import (
+	"github.com/spf13/viper"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
@@ -11,7 +12,7 @@ import (
 var DB *gorm.DB
 
 func ConnectDatabase() {
-	db, err := gorm.Open(sqlite.Open("entertainment.db"), &gorm.Config{
+	db, err := gorm.Open(sqlite.Open(viper.GetString("app.database")), &gorm.Config{
 		Logger: logger.New(
 			log.New(os.Stdout, "\r\n", log.LstdFlags),
 			logger.Config{

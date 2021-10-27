@@ -1,6 +1,7 @@
 package player
 
 import (
+	"github.com/spf13/viper"
 	"log"
 	"net"
 	"os/exec"
@@ -41,7 +42,7 @@ func StartMpv(url string) error {
 	log.Printf("Starting MPV for URL %v\n", url)
 	MpvRunning = true
 	MpvPaused = false
-	cmd := exec.Command("/usr/bin/mpv", url, "--input-ipc-server=/tmp/mpv.sock", "--no-video")
+	cmd := exec.Command(viper.GetString("binaries.mpv"), url, "--input-ipc-server=/tmp/mpv.sock", "--no-video")
 	err := cmd.Run()
 	MpvRunning = false
 	return err

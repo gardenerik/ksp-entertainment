@@ -1,0 +1,9 @@
+
+[app]
+  database = "entertainment.db"
+  debug = false
+  port = 8001
+
+[binaries]
+  mpv = "/usr/bin/mpv"
+  youtube_dl = "/usr/bin/youtube-dl"

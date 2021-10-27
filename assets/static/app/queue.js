@@ -19,8 +19,13 @@
     }
 
     async function addToQueue() {
+        const url = prompt("Video URL")
+        if (url.trim() === "") {
+            return
+        }
+
         let body = new FormData()
-        body.append('url', prompt("Video URL"))
+        body.append('url', url)
 
         await fetch('/api/queue/', {
             method: 'POST',

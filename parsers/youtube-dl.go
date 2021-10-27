@@ -3,6 +3,7 @@ package parsers
 import (
 	"bytes"
 	"fmt"
+	"github.com/spf13/viper"
 	"log"
 	"os/exec"
 	"strings"
@@ -20,7 +21,7 @@ func (y YoutubeDLParser) GetStreamURL(url string) string {
 
 func (y YoutubeDLParser) GetName(url string) string {
 	log.Printf("Invoking youtube-dl to get video name for %v\n", url)
-	cmd := exec.Command("/usr/bin/youtube-dl", "-e", url)
+	cmd := exec.Command(viper.GetString("binaries.youtube_dl"), "-e", url)
 	var out bytes.Buffer
 	cmd.Stdout = &out
 
