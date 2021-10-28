@@ -2,6 +2,7 @@ package parsers
 
 import (
 	"bytes"
+	"encoding/json"
 	"fmt"
 	"github.com/spf13/viper"
 	"log"
@@ -31,4 +32,41 @@ func (y YoutubeDLParser) GetName(url string) string {
 	}
 
 	return strings.Trim(out.String(), "\n ")
+}
+
+type YoutubeVideoMetadata struct {
+	Id          string      `json:"id"`
+	Title       string      `json:"title"`
+	Duration    float64     `json:"duration"`
+}
+
+func (m YoutubeVideoMetadata) URL() string {
+	return fmt.Sprintf("https://youtube.com/watch?v=%v", m.Id)
+}
+
+func (y YoutubeDLParser) GetPlaylistList(url string) []YoutubeVideoMetadata {
+	cmd := exec.Command(viper.GetString("binaries.youtube_dl"), "-j", "--flat-playlist", url)
+	var out bytes.Buffer
+	cmd.Stdout = &out
+	err := cmd.Run()
+	if err != nil {
+		fmt.Printf("GetPlaylistList yt-dl err: %v\n", err)
+		return []YoutubeVideoMetadata{}
+	}
+
+	var items []YoutubeVideoMetadata
+	for _, data := range strings.Split(out.String(), "\n") {
+		if data == "" {
+			continue
+		}
+
+		var item YoutubeVideoMetadata
+		err := json.Unmarshal([]byte(data), &item)
+		if err != nil {
+			fmt.Printf("GetPlaylistList JSON err: %v\n", err)
+			continue
+		}
+		items = append(items, item)
+	}
+	return items
 }

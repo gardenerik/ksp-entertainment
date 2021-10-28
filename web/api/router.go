@@ -17,5 +17,12 @@ func RegisterRoutes(router *gin.RouterGroup) {
 	router.POST("/playback/stop/", StopPlayback)
 	router.POST("/playback/pause/", PausePlayback)
 
+	router.GET("/playlists/", ListPlaylists)
+	router.POST("/playlists/", AddPlaylist)
+	router.POST("/playlists/import/", ImportPlaylist)
+	router.GET("/playlists/:id/", GetPlaylist)
+	router.POST("/playlists/:id/", AddPlaylistItem)
+	router.POST("/playlists/:id/play/", PlayPlaylist)
+
 	library.RegisterRoutes(router.Group("/library"))
 }

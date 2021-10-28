@@ -28,6 +28,7 @@ func ConnectDatabase() {
 	DB.AutoMigrate(&LibraryItem{})
 	DB.AutoMigrate(&QueueItem{})
 	DB.AutoMigrate(&TelegramUser{})
+	DB.AutoMigrate(&Playlist{})
 
 	log.Println("Database ready!")
 }

@@ -11,6 +11,8 @@ func RegisterRoutes(router *gin.RouterGroup) {
 	router.GET("/telegram/", Telegram)
 	router.GET("/queue/", QueueView)
 	router.GET("/library/", LibraryIndex)
+	router.GET("/playlists/", ListPlaylists)
+	router.GET("/playlists/:id/", GetPlaylist)
 }
 
 func RedirectHome(c *gin.Context) {

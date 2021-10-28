@@ -1,0 +1,25 @@
+{{define "title"}}Playlists{{end}}
+
+{{define "main"}}
+    <div class="flex items-baseline gap-4 mb-8">
+        <h1 class="font-bold text-4xl">Playlists</h1>
+
+{{/*        <button class="text-green-600 hover:text-green-500 hover:underline">+ Add item</button>*/}}
+        <button class="text-green-600 hover:text-green-500 hover:underline js-playlist-import">Import YouTube playlist</button>
+    </div>
+
+    {{range .playlists}}
+    <div class="mb-2 border border-gray-700 py-2 px-3 rounded flex items-center">
+        <div class="js-playlist-enqueue" data-id="{{.ID}}">
+            <i data-feather="play" title="Add to queue" class="w-5 h-5 mr-2 cursor-pointer hover:text-green-500"></i>
+        </div>
+        <a href="/playlists/{{.ID}}/">{{.Name}} <span class="text-xs text-gray-400">#{{.ID}}</span></a>
+    </div>
+    {{else}}
+    <div class="text-center text-gray-400 text-xl">
+        List of playlists is empty.
+    </div>
+    {{end}}
+
+    <script src="/static/app/playlists.js"></script>
+{{end}}

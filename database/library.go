@@ -16,8 +16,8 @@ type LibraryItem struct {
 
 type Playlist struct {
 	ID           uint `gorm:"primarykey" json:"id"`
-	Name         string
-	LibraryItems []LibraryItem
+	Name         string `json:"name"`
+	LibraryItems []LibraryItem `gorm:"many2many:playlist_items;" json:"library_items"`
 	CreatedAt    time.Time `json:"created_at"`
 	UpdatedAt    time.Time `json:"updated_at"`
 }
