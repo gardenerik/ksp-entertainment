@@ -1,3 +1,5 @@
+.PHONY: build clean
+
 build: clean
 	npm update
 	mkdir build_out
