@@ -7,6 +7,7 @@ require (
 	github.com/gin-gonic/gin v1.7.4
 	github.com/go-telegram-bot-api/telegram-bot-api v4.6.4+incompatible
 	github.com/spf13/viper v1.9.0
+	github.com/stretchr/testify v1.7.0
 	github.com/thanhpk/randstr v1.0.4
 	gopkg.in/guregu/null.v4 v4.0.0
 	gorm.io/driver/sqlite v1.1.6
@@ -14,6 +15,7 @@ require (
 )
 
 require (
+	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/fsnotify/fsnotify v1.5.1 // indirect
 	github.com/gin-contrib/sse v0.1.0 // indirect
 	github.com/go-playground/locales v0.13.0 // indirect
@@ -33,6 +35,7 @@ require (
 	github.com/modern-go/reflect2 v1.0.1 // indirect
 	github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e // indirect
 	github.com/pelletier/go-toml v1.9.4 // indirect
+	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/spf13/afero v1.6.0 // indirect
 	github.com/spf13/cast v1.4.1 // indirect
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
@@ -47,4 +50,5 @@ require (
 	gopkg.in/check.v1 v1.0.0-20200902074654-038fdea0a05b // indirect
 	gopkg.in/ini.v1 v1.63.2 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
+	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
 )
