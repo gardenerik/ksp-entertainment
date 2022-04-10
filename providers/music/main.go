@@ -13,11 +13,11 @@ type AlbumMetadata struct {
 }
 
 type SongMetadata struct {
-	Provider Provider
-	Name     string
-	Artist   string
-	Album    AlbumMetadata
-	Cover    string
+	Provider      Provider
+	OriginalTitle string
+	Name          string
+	Artist        string
+	Album         AlbumMetadata
 }
 
 type SongProvider interface {

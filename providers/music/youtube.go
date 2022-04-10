@@ -87,10 +87,10 @@ func (y Youtube) Metadata(identifier string) (SongMetadata, error) {
 	}
 
 	return SongMetadata{
-		Provider: YOUTUBE,
-		Name:     name,
-		Artist:   artist,
-		Album:    AlbumMetadata{},
-		Cover:    fmt.Sprintf("https://i.ytimg.com/vi_webp/%s/maxresdefault.webp", ytJson.Id),
+		Provider:      YOUTUBE,
+		OriginalTitle: ytJson.Title,
+		Name:          name,
+		Artist:        artist,
+		Album:         AlbumMetadata{},
 	}, nil
 }

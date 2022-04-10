@@ -37,5 +37,4 @@ func TestYoutube_Metadata(t *testing.T) {
 	assert.Equal(t, "Never Gonna Give You Up", metadata.Name)
 	assert.Equal(t, "Rick Astley", metadata.Artist)
 	assert.Equal(t, "", metadata.Album.Name)
-	assert.Equal(t, "https://i.ytimg.com/vi_webp/dQw4w9WgXcQ/maxresdefault.webp", metadata.Cover)
 }

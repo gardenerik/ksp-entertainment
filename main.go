@@ -6,6 +6,7 @@ import (
 	"log"
 	"zahradnik.xyz/ksp-entertainment/database"
 	"zahradnik.xyz/ksp-entertainment/player"
+	"zahradnik.xyz/ksp-entertainment/providers/music"
 	"zahradnik.xyz/ksp-entertainment/telegram"
 	"zahradnik.xyz/ksp-entertainment/web"
 )
@@ -19,6 +20,8 @@ func main() {
 	viper.SetDefault("app.database", "entertainment.db")
 	viper.SetDefault("binaries.youtube_dl", "/usr/bin/youtube-dl")
 	viper.SetDefault("binaries.mpv", "/usr/bin/mpv")
+	viper.SetDefault("api.spotify.client_id", "")
+	viper.SetDefault("api.spotify.client_secret", "")
 
 	viper.SetConfigFile("config.toml")
 	viper.AddConfigPath(".")
@@ -27,6 +30,7 @@ func main() {
 		panic(err)
 	}
 
+	music.GlobalProviders.Prepare()
 	database.ConnectDatabase()
 	go player.RunPlayerWorker()
 
